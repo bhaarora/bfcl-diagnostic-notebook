@@ -50,7 +50,34 @@ section — this notebook exists so that specific number can be independently
 reproduced in under a minute rather than taken on trust.
 
 ## Data and license note
+## verify_headline_numbers_bundle/
 
+A second standalone notebook, independent of the first. Reconstructs four
+of the paper's headline numbers directly from bundled raw per-case CSVs,
+using code written fresh for this purpose — not a re-run of the paper's
+own analysis functions.
+
+**What it reconstructs:**
+- All four fitted crossover points from Table 1 (1.5B, 3B, 7B, 14B)
+- The α scaling exponent (log-log fit across those four points)
+- One H9 filtering effect size (7B, at |V|=234)
+
+**How to run it:** open `verify_headline_numbers.ipynb` and run all cells
+in order. No GPU, no model weights, no network access required — everything
+needed is in the accompanying `data/` folder. Runs in well under a minute.
+
+**What "independent" means here, precisely:** this notebook was written by
+the same overall process that produced the paper, using a different code
+path than the original analysis (not the same functions re-executed) —
+not by a separate human or system. It lets you check these specific numbers
+yourself, with code short enough to read in full, rather than trusting a
+self-report. It does not cover every number in the paper, and it is
+explicitly not a substitute for full external re-derivation. Scope and
+limitations are stated in the notebook's own first cell.
+
+**Expected output:** every reconstructed value should print `[MATCH]`
+against the value the paper claims. If anything prints `[** MISMATCH **]`,
+that's worth reporting.
 BFCL task data is fetched at runtime from its public source
 (github.com/ShishirPatil/gorilla, Apache 2.0) and is not redistributed here.
 The Phi-3.5-mini-instruct tokenizer is fetched at runtime from its public
